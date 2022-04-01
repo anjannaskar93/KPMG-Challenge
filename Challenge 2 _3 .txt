@@ -1,0 +1,5 @@
+The code allows for a particular data key to be retrieved :
+
+
+individuallyConsole.WriteLine("Enter key to get value:");
+string keyValue= Console.ReadLine();
