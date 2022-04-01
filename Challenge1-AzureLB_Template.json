@@ -1,0 +1,74 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string"
+        },
+        "tier": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2021-05-01",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Network/loadBalancers",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "Microsoft.Network/publicIPAddresses/pubtest01"
+            ],
+            "tags": {
+                "kpmg": "challenge1"
+            },
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "frontendtest001",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "/subscriptions/718dd226-13ee-4a83-a972-a0677ab10712/resourceGroups/KPMGtest001/providers/Microsoft.Network/publicIPAddresses/pubtest01"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [],
+                "probes": [],
+                "loadBalancingRules": [],
+                "inboundNatRules": [],
+                "outboundRules": []
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
+        {
+            "apiVersion": "2020-08-01",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "name": "pubtest01",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "properties": {
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            },
+            "zones": [
+                "1",
+                "2",
+                "3"
+            ]
+        }
+    ]
+}

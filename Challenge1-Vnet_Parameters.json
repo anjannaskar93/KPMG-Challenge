@@ -1,0 +1,65 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "extendedLocation": {
+            "value": {}
+        },
+        "virtualNetworkName": {
+            "value": "VNettest001"
+        },
+        "resourceGroup": {
+            "value": "NetworkWatcherRG"
+        },
+        "addressSpaces": {
+            "value": [
+                "10.0.0.0/16"
+            ]
+        },
+        "ipv6Enabled": {
+            "value": false
+        },
+        "subnetCount": {
+            "value": 3
+        },
+        "subnet0_name": {
+            "value": "webtiersubnet"
+        },
+        "subnet0_addressRange": {
+            "value": "10.0.0.0/24"
+        },
+        "subnet1_name": {
+            "value": "apptiersubnet"
+        },
+        "subnet1_addressRange": {
+            "value": "10.0.1.0/24"
+        },
+        "subnet2_name": {
+            "value": "dbtiersubnet1"
+        },
+        "subnet2_addressRange": {
+            "value": "10.0.2.0/24"
+        },
+        "ddosProtectionPlanEnabled": {
+            "value": false
+        },
+        "firewallEnabled": {
+            "value": false
+        },
+        "bastionEnabled": {
+            "value": true
+        },
+        "bastionName": {
+            "value": "KPMGbastiontest01"
+        },
+        "bastionSubnetAddressSpace": {
+            "value": "10.0.3.0/25"
+        },
+        "publicIpAddressForBastion": {
+            "value": "testpub01"
+        }
+    }
+}
